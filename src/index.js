@@ -53,5 +53,11 @@ const countVowels = (str) => {
   const vowels = 'aeiouAEIOU';
  return str.split('').filter(char => vowels.includes(char)).length; 
 }
+//=================================================================================================================
+
+//5) Removes duplicate values from an array and returns a new array with unique values using Set
+const purgeDuplicates = (arr) => {
+  return [...new Set(arr)];
+}
 
 })();
