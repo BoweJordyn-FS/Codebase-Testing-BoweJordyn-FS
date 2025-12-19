@@ -62,6 +62,9 @@ describe('reverseString', () => {
     test('returns the reversed string with spaces', () => {
         expect(reverseString('hello world')).toBe('dlrow olleh');
     });
+    test('returnd the reversed string with a single character', () => {
+        expect(reverseString('a')).toBe('a');
+    });
 
     //ERROR HANDLING
     test('throws error for null input', () => {
@@ -163,6 +166,9 @@ describe('purgeDuplicates', () => {
     });
     test('returns an array of strings', () => {
         expect(purgeDuplicates(['a', 'b', 'a', 'c'])).toEqual(['a', 'b', 'c']);
+    });
+    test('returns an array of with all duplicates', () => {
+        expect(purgeDuplicates(['a', 'a', 'a', 'a'])).toEqual(['a']);
     });
 
     //ERROR HANDLING

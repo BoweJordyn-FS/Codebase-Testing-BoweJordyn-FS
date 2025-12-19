@@ -4,8 +4,8 @@
 // 1) Takes an array of numbers and returns the sum of all elements using a for loop
 const sumOfArray = (arr) => {
   
-  //if the input array is empty or not an array, throw an error
-  if (arr.length === 0 || !Array.isArray(arr)|| arr === NaN) {
+  //if the input is not an array or is empty, throw an error
+  if (!Array.isArray(arr) || arr.length === 0) {
     throw new Error('Invalid input: Please provide a non-empty array of numbers.');
   }
 
@@ -16,10 +16,10 @@ const sumOfArray = (arr) => {
     }
   }
 
-let sum = 0;
-for (let i = 0; i < arr.length; i++) {
-  sum += arr[i];
-}
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
   return sum;
 }
 //=================================================================================================================
@@ -28,7 +28,7 @@ for (let i = 0; i < arr.length; i++) {
 const reverseString = (str) => {
 
   //if the input is not a string, throw an error
-  if (typeof str !== 'string' || str === null || str === undefined) {
+  if (typeof str !== 'string') {
     throw new Error('Invalid input: Please provide a valid string.');
   }
 
@@ -44,7 +44,7 @@ const findMax = (arr) => {
     throw new Error('Invalid input: Please provide a non-empty array of numbers.');
   }
 
-   // check if all elements are numbers
+  // check if all elements are numbers
   for (let i = 0; i < arr.length; i++) {
     if (typeof arr[i] !== 'number' || isNaN(arr[i])) {
       throw new Error('Invalid input: Please provide a non-empty array of numbers.');
@@ -59,23 +59,25 @@ const findMax = (arr) => {
 const countVowels = (str) => {
 
   //if the input is not a string, throw an error
-  if (typeof str !== 'string' || str === null || str === undefined) {
+  if (typeof str !== 'string') {
     throw new Error('Invalid input: Please provide a valid string.');
   }
 
   const vowels = 'aeiouAEIOU';
- return str.split('').filter(char => vowels.includes(char)).length; 
+  return str.split('').filter(char => vowels.includes(char)).length; 
 }
 //=================================================================================================================
 
 //5) Removes duplicate values from an array and returns a new array with unique values using Set
 const purgeDuplicates = (arr) => {
+  
   //if the input is not an array, throw an error
   if (!Array.isArray(arr)) {
     throw new Error('Invalid input: Please provide a valid array.');
   }
   return [...new Set(arr)];
 }
+
 module.exports = { sumOfArray, reverseString, findMax, countVowels, purgeDuplicates };
 
 
