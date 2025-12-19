@@ -1,19 +1,25 @@
 // Imports your SCSS stylesheet
-import './styles/index.css';
+//import './styles/index.css';
 
-(() => {
 // 1) Takes an array of numbers and returns the sum of all elements using a for loop
 const sumOfArray = (arr) => {
-  let sum = 0;
-  for (let i = 0; i < arr.length; i++) {
-    sum += arr[i];
-  }
-
+  
   //if the input array is empty or not an array, throw an error
-  if (arr.length === 0 || !Array.isArray(arr)) {
+  if (arr.length === 0 || !Array.isArray(arr)|| arr === NaN) {
     throw new Error('Invalid input: Please provide a non-empty array of numbers.');
   }
 
+  // check if all elements are numbers
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] !== 'number' || isNaN(arr[i])) {
+      throw new Error('Invalid input: Please provide a non-empty array of numbers.');
+    }
+  }
+
+let sum = 0;
+for (let i = 0; i < arr.length; i++) {
+  sum += arr[i];
+}
   return sum;
 }
 //=================================================================================================================
@@ -38,6 +44,13 @@ const findMax = (arr) => {
     throw new Error('Invalid input: Please provide a non-empty array of numbers.');
   }
 
+   // check if all elements are numbers
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] !== 'number' || isNaN(arr[i])) {
+      throw new Error('Invalid input: Please provide a non-empty array of numbers.');
+    }
+  }
+
   return Math.max(...arr);
 }
 //=================================================================================================================
@@ -57,7 +70,20 @@ const countVowels = (str) => {
 
 //5) Removes duplicate values from an array and returns a new array with unique values using Set
 const purgeDuplicates = (arr) => {
+  //if the input is not an array, throw an error
+  if (!Array.isArray(arr)) {
+    throw new Error('Invalid input: Please provide a valid array.');
+  }
   return [...new Set(arr)];
 }
+module.exports = { sumOfArray, reverseString, findMax, countVowels, purgeDuplicates };
 
-})();
+
+// (() => {
+//   // Test cases for the functions
+//   console.log(sumOfArray([1, 2, 3, 4, 5])); // Output: 15
+//   console.log(reverseString("Hello")); // Output: "olleH"
+//   console.log(findMax([10, 20, 30, 40, 50])); // Output: 50
+//   console.log(countVowels("Hello World")); // Output: 3
+//   console.log(purgeDuplicates([1, 2, 2, 3, 4, 4, 5])); // Output: [1, 2, 3, 4, 5]
+// })();
